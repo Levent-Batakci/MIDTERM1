@@ -1,4 +1,4 @@
-function [Z, SVs] = PCA_tol(X, tol)
+function [Z, Ur] = PCA_tol(X, tol)
 %Returns the results of the PCA on X
 %Centers X.
 %Tolerance should be between 0 and 1, ideally close to 0.

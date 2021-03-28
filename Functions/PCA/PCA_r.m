@@ -1,4 +1,4 @@
-function [Z, SVs] = PCA_r(X, r)
+function [Z, Ur] = PCA_r(X, r)
 %Returns the results of the PCA on X
 %Centers X.
 

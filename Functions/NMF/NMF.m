@@ -3,14 +3,14 @@ function [W, H] = NMF(X, r, tol)
 
 [n,p] = size(X);
 
-t = 1;
+t = 0;
 
 Wo = rand(n,r);
 Ho = rand(r,p);
 W = Wo;
 H = Ho;
 
-while t==1 || (norm(W - Wo, 'fro')/norm(Wo, 'fro') + norm(H - Ho, 'fro')/norm(Ho, 'fro') < tol)
+while t==0 || (norm(W - Wo, 'fro')/norm(Wo, 'fro') + norm(H - Ho, 'fro')/norm(Ho, 'fro') > tol)
     %Move forward!
     Wo = W;
     Ho = H;
@@ -20,10 +20,10 @@ while t==1 || (norm(W - Wo, 'fro')/norm(Wo, 'fro') + norm(H - Ho, 'fro')/norm(Ho
     
     %Update W
     Xc = Wo * Ho; %approximation of X
-    W = ((X*H') ./  (Xc * H')) .* Wo;
+    W = ((X*Ho') ./  (Xc * Ho')) .* Wo;
     
     Xc = W * Ho; %approximation of X
-    H = ((W'*X) ./ (W'*Xc)) .* Ho';
+    H = ((W'*X) ./ (W'*Xc)) .* Ho;
     
     t=t+1;
 end
