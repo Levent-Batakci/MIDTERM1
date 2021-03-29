@@ -6,11 +6,10 @@ function [Z, Ur] = PCA_r(X, r)
 
 Xc = X - sum(X,2) / p;
 
-[U,V,~] = svd(Xc);
+[U,~,~] = svd(Xc);
 
 Ur = U(:,1:r);
 
-SVs = diag(V);
 Z = Ur' * Xc;
 
 end
